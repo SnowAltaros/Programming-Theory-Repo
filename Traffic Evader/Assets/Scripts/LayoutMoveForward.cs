@@ -3,32 +3,45 @@ using UnityEngine.InputSystem;
 
 public class LayoutMoveForward : MonoBehaviour
 {
-    [SerializeField] private float speed = 20.0f;
-    [SerializeField] private float fastSpeed = 40.0f;
-    private InputSystem_Actions inputActions;
-    [SerializeField ]private Vector2 moveForward;
-
-    private void Awake()
+    private PlayerVehicle playerVehicle;
+    private float speed = 20.0f;
+    public float Speed
     {
-        inputActions = new InputSystem_Actions();
+        get { return speed; }
+        set
+        {
+            if (value < 0)
+            {
+                Debug.LogWarning("Speed cannot be negative. Setting speed to 0.");
+                speed = 0;
+            }
+            else
+            {
+                speed = value;
+            }
+        }
     }
-
-    private void OnEnable()
+    private float fastSpeed = 40.0f;
+     public float FastSpeed
     {
-        inputActions.Enable();
+        get { return fastSpeed; }
+        set
+        {
+            if (value < speed)
+            {
+                Debug.LogWarning("Fast speed cannot be less than speed. Setting fast speed to: " + speed);
+                fastSpeed = speed;
+            }
+            else
+            {
+                fastSpeed = value;
+            }
+        }
     }
-
-    private void OnDisable()
-    {
-        inputActions.Disable();
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        playerVehicle = GameObject.FindAnyObjectByType<PlayerVehicle>();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -37,9 +50,8 @@ public class LayoutMoveForward : MonoBehaviour
 
     void MoveForward()
     {
-        moveForward = inputActions.Player.Move.ReadValue<Vector2>();
         transform.Translate(Vector3.back * speed * Time.deltaTime);
-        if (moveForward.y > 0)
+        if (playerVehicle != null && playerVehicle.input.y > 0)
         {
             transform.Translate(Vector3.back * fastSpeed * Time.deltaTime);
         }

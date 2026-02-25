@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class LayoutMoveForward : MonoBehaviour
 {
     private PlayerVehicle playerVehicle;
-    private float speed = 20.0f;
+    private float speed = 40.0f;
     public float Speed
     {
         get { return speed; }
@@ -21,7 +21,7 @@ public class LayoutMoveForward : MonoBehaviour
             }
         }
     }
-    private float fastSpeed = 40.0f;
+    private float fastSpeed = 50.0f;
      public float FastSpeed
     {
         get { return fastSpeed; }

@@ -53,9 +53,10 @@ public class PlayerVehicle : Vehicle
         
         if (input.y > 0)
         {
-            if (transform.position.z < -184)
+            if (transform.position.z < -186)
             {
                 transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+                TurningSpeed = 20.0f; // Increase turning speed when accelerating
             }
         }
         else if (input.y == 0)
@@ -64,6 +65,16 @@ public class PlayerVehicle : Vehicle
             {
                 transform.Translate(Vector3.back * Speed * Time.deltaTime);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("Collided with an enemy vehicle!");
+            // Handle collision logic here (e.g., reduce health, play sound, etc.)
+            Destroy(gameObject); // Destroy the player vehicle on collision
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Vehicle : MonoBehaviour
 {
-    private int currentLane;
+    public int currentLane;
     private float speed;
     public float Speed
     {
@@ -44,6 +44,11 @@ public class Vehicle : MonoBehaviour
     public virtual void MoveForward()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
+    }
+
+    public void MoveBackward()
+    {
+        transform.Translate(Vector3.back * speed * Time.deltaTime);
     }
 
     public void GetLaneIndex()

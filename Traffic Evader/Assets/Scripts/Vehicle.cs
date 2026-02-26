@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Vehicle : MonoBehaviour
 {
-    public int currentLane;
-    private float speed;
+    private int currentLane;
+    [SerializeField]private float speed;
     public float Speed
     {
         get { return speed; }
@@ -22,7 +22,7 @@ public class Vehicle : MonoBehaviour
         }
     }
 
-    private float turningSpeed;
+    [SerializeField]private float turningSpeed;
     public float TurningSpeed
     {
         get { return turningSpeed; }

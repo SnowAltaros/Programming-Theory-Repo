@@ -4,13 +4,16 @@ public class EnemyVehicle : Vehicle
 {
     private float destroyZPosition = -220.0f; // Z position at which the enemy vehicle will be destroyed
     private bool hasChangedLane = false; // Flag to track if the enemy vehicle has already changed lanes
-    private PlayerVehicle playerVehicle;
+    private DifficultyManager difficultyManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        playerVehicle = GameObject.FindAnyObjectByType<PlayerVehicle>();
-        Speed = 50.0f;
-        TurningSpeed = 10.0f;
+        difficultyManager = GameObject.FindAnyObjectByType<DifficultyManager>();
+        if (difficultyManager != null)
+        {
+            Speed = difficultyManager.enemySpeed;
+            TurningSpeed = difficultyManager.enemyTurningSpeed;
+        }
         GetLaneIndex();
         transform.Rotate(0, 180, 0); // Rotate the enemy vehicle to face the player
     }
@@ -19,7 +22,6 @@ public class EnemyVehicle : Vehicle
     void Update()
     {
         MoveForward();
-        GetFastSpeed();
 
         if (transform.position.z < -120.0f && !hasChangedLane)
         {
@@ -49,19 +51,5 @@ public class EnemyVehicle : Vehicle
         }
 
         hasChangedLane = true; // Set the flag to indicate that the enemy vehicle has changed lanes
-    }
-
-    void GetFastSpeed()
-    {
-        if(playerVehicle != null && playerVehicle.input.y > 0)
-        {
-            Speed = 100.0f; // Increase speed when the player is accelerating
-            TurningSpeed = 20.0f; // Increase turning speed when the player is accelerating
-        }
-        else
-        {
-            Speed = 50.0f; // Reset to normal speed when the player is not accelerating
-            TurningSpeed = 10.0f; // Reset to normal turning speed when the player is not accelerating
-        }
     }
 }

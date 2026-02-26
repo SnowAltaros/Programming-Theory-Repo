@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerVehicle : Vehicle
 {
     private InputSystem_Actions inputActions;
-    [SerializeField] public Vector2 input;
+    public Vector2 input;
 
     private void Awake()
     {

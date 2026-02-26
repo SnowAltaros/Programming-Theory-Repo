@@ -24,7 +24,10 @@ public class DifficultyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameManager.instance.currentState == GameState.GameOver)
+        {
+            StopAllCoroutines(); // Stop the difficulty increase when the game is not in the playing state
+        }
     }
 
     IEnumerator IncreaseDifficulty()
@@ -46,6 +49,7 @@ public class DifficultyManager : MonoBehaviour
             }
             enemySpeed += speedIncreaseAmount;
             enemyTurningSpeed += turningSpeedIncreaseAmount;
+            
             if (spawnManager != null)
             {
                 if (spawnManager.spawnInterval > 0.5f)

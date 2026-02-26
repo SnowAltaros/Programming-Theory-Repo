@@ -16,7 +16,10 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameManager.instance.currentState == GameState.GameOver)
+        {
+            StopAllCoroutines(); // Stop spawning when the game is not in the playing state
+        }
     }
 
     private void SpawnEnemyVehicle()

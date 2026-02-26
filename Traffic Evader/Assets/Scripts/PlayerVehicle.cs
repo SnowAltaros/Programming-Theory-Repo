@@ -73,7 +73,7 @@ public class PlayerVehicle : Vehicle
         if (other.CompareTag("Enemy"))
         {
             Debug.Log("Collided with an enemy vehicle!");
-            // Handle collision logic here (e.g., reduce health, play sound, etc.)
+            GameManager.instance.EndGame();
             Destroy(gameObject); // Destroy the player vehicle on collision
         }
     }

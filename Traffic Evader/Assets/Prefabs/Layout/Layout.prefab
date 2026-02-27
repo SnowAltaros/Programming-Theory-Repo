@@ -282,7 +282,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4980323024803555035}
-  - component: {fileID: 8487468107790673979}
   - component: {fileID: 5683672918788076011}
   m_Layer: 0
   m_Name: Layout
@@ -308,20 +307,6 @@ Transform:
   - {fileID: 6412916567344112161}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8487468107790673979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3930305171323694295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61f42f40b69d34ef0928a76185605aaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LayoutMoveForward
-  speed: 20
-  moveForward: {x: 0, y: 0}
 --- !u!114 &5683672918788076011
 MonoBehaviour:
   m_ObjectHideFlags: 0

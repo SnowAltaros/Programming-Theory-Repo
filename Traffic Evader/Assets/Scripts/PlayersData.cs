@@ -9,6 +9,7 @@ public class PlayersData : MonoBehaviour
     public string newPlayerName;
     public float newPlayerScore;
     public bool isInTopPlayers = false;
+    public int playerVehicleIndex;
 
     private void Awake()
     {
@@ -55,7 +56,6 @@ public class PlayersData : MonoBehaviour
         topPlayers.Sort((x, y) => y.distance.CompareTo(x.distance));
 
         SavePlayersData();
-        Debug.Log(Application.persistentDataPath);
     }
 
     public void SavePlayersData()

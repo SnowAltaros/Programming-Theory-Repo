@@ -1,13 +1,10 @@
 using UnityEngine;
-using Unity.VisualScripting;
-using UnityEngine.UI;
 using TMPro;
-
-
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+
+
 public class MenuUIHandler : MonoBehaviour
 {
     [SerializeField] private TMP_InputField playerNameInputField; // Reference to the InputField for player name input

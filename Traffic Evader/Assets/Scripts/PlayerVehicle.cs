@@ -31,18 +31,21 @@ public class PlayerVehicle : Vehicle
     // Update is called once per frame
     void Update()
     {   
-        MoveForward();
-
-        if (inputActions.Player.MoveLeft.triggered)
+        if (GameManager.instance.currentState == GameState.Playing)
         {
-            ChangeLane(-1); // Move left
-        }
-        else if (inputActions.Player.MoveRight.triggered)
-        {
-            ChangeLane(1); // Move right
-        }
+            MoveForward();
 
-        UpdateLanePosition(); // Update the lane position immediately after changing lanes
+            if (inputActions.Player.MoveLeft.triggered)
+            {
+                ChangeLane(-1); // Move left
+            }
+            else if (inputActions.Player.MoveRight.triggered)
+            {
+                ChangeLane(1); // Move right
+            }
+
+            UpdateLanePosition(); // Update the lane position immediately after changing lanes
+        }
 
     }
 

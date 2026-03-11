@@ -10,6 +10,7 @@ public class MenuUIHandler : MonoBehaviour
     [SerializeField] private TMP_InputField playerNameInputField; // Reference to the InputField for player name input
     [SerializeField] private GameObject bestScoresPanel;
     [SerializeField] private TextMeshProUGUI bestScoresText; // Reference to the TextMeshProUGUI component for displaying best scores
+    [SerializeField] private GameObject mainMenuCanvas;
 
     private bool CheckEmptyInput()
     {
@@ -29,8 +30,8 @@ public class MenuUIHandler : MonoBehaviour
         if (CheckEmptyInput())
         {
             PlayersData.instance.newPlayerName = playerNameInputField.text; // Set the new player name in PlayersData to the input from the InputField
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0); // Load the first scene (index 0) to start the game
-            GameManager.instance.StartGame(); // Set the game state to Playing when the game starts
+            mainMenuCanvas.SetActive(false);
+            GameManager.instance.StartingGame();
         }
     }
 

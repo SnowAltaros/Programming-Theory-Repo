@@ -43,5 +43,8 @@ public class GameUIHandler : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(1); // Load the main menu scene (index 1)
         GameManager.instance.currentState = GameState.MainMenu; // Set the game state to MainMenu when returning to the main menu
+        Time.timeScale = 1;
+        MenuAudioManager.instance.isGameMusic = true;
+        MenuAudioManager.instance.ChangeToMenuMusic();
     }
 }

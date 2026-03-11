@@ -1,10 +1,13 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public enum GameState
 {
     MainMenu,
     Playing,
+    StartingPlay,
     GameOver
 }
 public class GameManager : MonoBehaviour
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         currentState = GameState.Playing; // Change the game state to Playing when the game starts
+        SceneManager.LoadScene(0);
         Time.timeScale = 1; // Ensure the game is running at normal speed when it starts
     }
 
@@ -42,5 +46,17 @@ public class GameManager : MonoBehaviour
         currentState = GameState.GameOver; // Change the game state to GameOver when the game ends
         Time.timeScale = 0; // Pause the game by setting time scale to 0
         PlayersData.instance.SavePlayerData(PlayersData.instance.newPlayerName, PlayersData.instance.newPlayerScore); // Save the player's data when the game ends
+    }
+
+    public void StartingGame()
+    {
+        currentState = GameState.StartingPlay;
+        StartCoroutine(CountFiveSecconds());
+    }
+
+    IEnumerator CountFiveSecconds()
+    {
+        yield return new WaitForSeconds(5);
+        StartGame();
     }
 }

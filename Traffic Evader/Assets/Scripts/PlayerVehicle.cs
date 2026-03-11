@@ -59,6 +59,7 @@ public class PlayerVehicle : Vehicle
             {
                 transform.Translate(Vector3.forward * Speed * Time.deltaTime);
                 TurningSpeed = 20.0f; // Increase turning speed when accelerating
+                MenuAudioManager.instance.PlayFastSound();
             }
         }
         else if (input.y == 0)
@@ -67,6 +68,7 @@ public class PlayerVehicle : Vehicle
             {
                 transform.Translate(Vector3.back * Speed * Time.deltaTime);
             }
+            MenuAudioManager.instance.PlayLowSound();
         }
     }
 
@@ -77,6 +79,7 @@ public class PlayerVehicle : Vehicle
             Debug.Log("Collided with an enemy vehicle!");
             GameManager.instance.EndGame();
             Destroy(gameObject); // Destroy the player vehicle on collision
+            MenuAudioManager.instance.PlayCrashSound();
         }
     }
 }

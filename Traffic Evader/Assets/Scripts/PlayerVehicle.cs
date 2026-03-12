@@ -1,9 +1,13 @@
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerVehicle : Vehicle
 {
+    [SerializeField] private ParticleSystem explosionParticle;
     private InputSystem_Actions inputActions;
     public Vector2 input;
+    
 
     private void Awake()
     {
@@ -46,7 +50,6 @@ public class PlayerVehicle : Vehicle
 
             UpdateLanePosition(); // Update the lane position immediately after changing lanes
         }
-
     }
 
     public override void MoveForward()
@@ -78,8 +81,12 @@ public class PlayerVehicle : Vehicle
         {
             Debug.Log("Collided with an enemy vehicle!");
             GameManager.instance.EndGame();
-            Destroy(gameObject); // Destroy the player vehicle on collision
+            
             MenuAudioManager.instance.PlayCrashSound();
+            
+            Instantiate(explosionParticle, transform.position, Quaternion.identity);
+
+            Destroy(gameObject); // Destroy the player vehicle on collision
         }
     }
 }

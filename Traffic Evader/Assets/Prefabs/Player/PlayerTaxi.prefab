@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerVehicle
   speed: 0
   turningSpeed: 0
+  explosionParticle: {fileID: 8008170516018834882, guid: 630f3d086c17245459da30b1eef2db04, type: 3}
   input: {x: 0, y: 0}
 --- !u!65 &1858143997647074122
 BoxCollider:

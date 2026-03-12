@@ -9,6 +9,7 @@ public class MenuUIHandler : MonoBehaviour
 {
     [SerializeField] private TMP_InputField playerNameInputField; // Reference to the InputField for player name input
     [SerializeField] private GameObject bestScoresPanel;
+    [SerializeField] private GameObject controlsPanel;
     [SerializeField] private TextMeshProUGUI bestScoresText; // Reference to the TextMeshProUGUI component for displaying best scores
     [SerializeField] private GameObject mainMenuCanvas;
 
@@ -54,6 +55,16 @@ public class MenuUIHandler : MonoBehaviour
         {
             bestScoresText.text += player.playerName + ": " + player.distance.ToString("F0") + "m\n";
         }
+    }
+
+    public void ShowControlsPanel()
+    {
+        controlsPanel.SetActive(true);
+    }
+
+    public void HideControlsPanel()
+    {
+        controlsPanel.SetActive(false);
     }
 
     public void HideBestScores()

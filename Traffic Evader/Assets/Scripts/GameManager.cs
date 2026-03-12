@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        currentState = GameState.GameOver; // Change the game state to GameOver when the game ends
+        StartCoroutine(WaitSecond());
         Time.timeScale = 0; // Pause the game by setting time scale to 0
         PlayersData.instance.SavePlayerData(PlayersData.instance.newPlayerName, PlayersData.instance.newPlayerScore); // Save the player's data when the game ends
     }
@@ -58,5 +58,12 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         StartGame();
+    }
+
+     IEnumerator WaitSecond()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        currentState = GameState.GameOver; // Change the game state to GameOver when the game ends
+        Debug.Log(currentState);
     }
 }

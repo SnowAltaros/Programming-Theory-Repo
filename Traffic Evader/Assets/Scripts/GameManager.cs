@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         currentState = GameState.Playing; // Change the game state to Playing when the game starts
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         Time.timeScale = 1; // Ensure the game is running at normal speed when it starts
     }
 

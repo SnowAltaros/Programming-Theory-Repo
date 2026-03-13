@@ -35,13 +35,13 @@ public class GameUIHandler : MonoBehaviour
 
     public void RestartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0); // Load the first scene (index 0) to restart the game
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1); // Load the first scene (index 0) to restart the game
         GameManager.instance.StartGame(); // Set the game state to Playing when the game restarts
     }
 
     public void MainMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1); // Load the main menu scene (index 1)
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0); // Load the main menu scene (index 1)
         GameManager.instance.currentState = GameState.MainMenu; // Set the game state to MainMenu when returning to the main menu
         Time.timeScale = 1;
         MenuAudioManager.instance.isGameMusic = true;
